@@ -1,10 +1,10 @@
-#
-Summary:	libgpevtype library
+Summary:	GPE PIM Interchange library
+Summary(pl.UTF-8):	Biblioteka wymiany danych GPE PIM
 Name:		libgpevtype
 Version:	0.17
 Release:	1
 License:	LGPL
-Group:		Development/Libraries
+Group:		Libraries
 Source0:	http://gpe.linuxtogo.org/download/source/%{name}-%{version}.tar.bz2
 # Source0-md5:	c9c031ee32bcdb3c8bf0d31083330d63
 URL:		http://gpe.linuxtogo.org
@@ -14,14 +14,22 @@ BuildRequires:	libmimedir-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-libgpevtype library.
+GPE PIM Interchange library.
+
+%description -l pl.UTF-8
+Biblioteka wymiany danych GPE PIM.
 
 %package devel
 Summary:	Header files for libgpevtype
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libgpevtype
 Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for libgpevtype.
+
+%description devel -l pl.UTF-8
+Pliki nagłówkowe biblioteki libgpevtype.
 
 %package static
 Summary:	Static libgpevtype library
@@ -60,15 +68,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root)    %{_libdir}/libgpevtype.so.0.0.0
+%attr(755,root,root) %{_libdir}/libgpevtype.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libgpevtype.so
 %{_libdir}/libgpevtype.la
-%{_libdir}/libgpevtype.so
-%{_pkgconfigdir}/libgpevtype.pc
 %{_includedir}/gpe/*.h
-
+%{_pkgconfigdir}/libgpevtype.pc
 
 %files static
 %defattr(644,root,root,755)
