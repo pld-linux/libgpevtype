@@ -1,18 +1,19 @@
 Summary:	GPE PIM Interchange library
 Summary(pl.UTF-8):	Biblioteka wymiany danych GPE PIM
 Name:		libgpevtype
-Version:	0.17
+Version:	0.50
 Release:	1
-License:	LGPL v2+
+License:	GPL v2+
 Group:		Libraries
 Source0:	http://gpe.linuxtogo.org/download/source/%{name}-%{version}.tar.bz2
-# Source0-md5:	c9c031ee32bcdb3c8bf0d31083330d63
+# Source0-md5:	4d7a20b215c53b73786690e895f05750
 URL:		http://gpe.linuxtogo.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 1:2.0
-BuildRequires:	libeventdb-devel >= 0.29
+BuildRequires:	libeventdb-devel >= 0.90
 BuildRequires:	libmimedir-devel
+BuildRequires:	libtododb-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -29,8 +30,9 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libgpevtype
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.0
-Requires:	libeventdb-devel >= 0.29
+Requires:	libeventdb-devel >= 0.90
 Requires:	libmimedir-devel
+Requires:	libtododb-devel
 
 %description devel
 Header files for libgpevtype.
