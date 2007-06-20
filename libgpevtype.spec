@@ -12,10 +12,11 @@ BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 1:2.0
 BuildRequires:	libeventdb-devel >= 0.90
-BuildRequires:	libmimedir-devel
+BuildRequires:	libmimedir-devel >= 0.3.1
 BuildRequires:	libtododb-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.98
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -31,7 +32,7 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.0
 Requires:	libeventdb-devel >= 0.90
-Requires:	libmimedir-devel
+Requires:	libmimedir-devel >= 0.3.1
 Requires:	libtododb-devel
 
 %description devel
@@ -52,6 +53,18 @@ Static libgpevtype library.
 %description static -l pl.UTF-8
 Statyczna biblioteka libgpevtype.
 
+%package apidocs
+Summary:	libgpevtype API documentation
+Summary(pl.UTF-8):	Dokumentacja API libgpevtype
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+libgpevtype API documentation.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API libgpevtype.
+
 %prep
 %setup -q
 
@@ -60,7 +73,8 @@ Statyczna biblioteka libgpevtype.
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-%configure
+%configure \
+	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
@@ -89,3 +103,7 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libgpevtype.a
+
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/libgpevtype
